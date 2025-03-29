@@ -21,41 +21,50 @@ pipeline:
             steps:
               - step:
                   identifier: installdependencies
-                  name: install dependencies
-                  spec:
-                    command: npm install
-                  timeout: ""
+                  name: Install Dependencies
                   type: Run
+                  spec:
+                    shell: Sh
+                    image: node:18
+                    command: |
+                      echo "Checking Node.js & npm versions..."
+                      node -v
+                      npm -v
+                      npm install
+                  timeout: 10m
               - step:
                   identifier: test
-                  name: test
-                  spec:
-                    command: npm run test
-                  timeout: ""
+                  name: Run Tests
                   type: Run
+                  spec:
+                    shell: Sh
+                    image: node:18
+                    command: npm run test
+                  timeout: 10m
               - step:
                   identifier: build
-                  name: build
-                  spec:
-                    command: npm run build
-                  timeout: ""
+                  name: Build Project
                   type: Run
+                  spec:
+                    shell: Sh
+                    image: node:18
+                    command: npm run build
+                  timeout: 10m
               - step:
                   identifier: dockerbuild
-                  name: docker_build
+                  name: Docker Build
+                  type: BuildAndPushDockerRegistry
                   spec:
                     caching: true
                     connectorRef: <+input>
                     repo: hello/world
                     tags:
                       - latest
-                  timeout: ""
-                  type: BuildAndPushDockerRegistry
+                  timeout: 10m
           platform:
             arch: Amd64
             os: Linux
           runtime:
-            spec: {}
             type: Docker
-            image: node:20
+            spec: {}
         type: CI

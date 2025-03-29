@@ -51,10 +51,19 @@ pipeline:
                       - latest
                   timeout: ""
                   type: BuildAndPushDockerRegistry
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_2
+                  identifier: BuildAndPushDockerRegistry_2
+                  spec:
+                    connectorRef: account.harnessImage
+                    repo: chenna12356/harness-demo
+                    tags:
+                      - latest
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
           runtime:
-            spec: {}
             type: Docker
+            spec: {}
         type: CI

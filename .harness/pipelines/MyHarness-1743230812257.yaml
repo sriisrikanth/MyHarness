@@ -20,28 +20,6 @@ pipeline:
           execution:
             steps:
               - step:
-                  identifier: installdependencies
-                  name: Install Dependencies
-                  type: Run
-                  spec:
-                    shell: Sh
-                    image: node:18
-                    command: |
-                      echo "Checking Node.js & npm versions..."
-                      node -v
-                      npm -v
-                      npm install
-                  timeout: 10m
-              - step:
-                  identifier: build
-                  name: Build Project
-                  type: Run
-                  spec:
-                    shell: Sh
-                    image: node:18
-                    command: npm run build
-                  timeout: 10m
-              - step:
                   type: BuildAndPushDockerRegistry
                   name: BuildAndPushDockerRegistry_2
                   identifier: BuildAndPushDockerRegistry_2

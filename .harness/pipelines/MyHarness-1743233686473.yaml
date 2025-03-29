@@ -60,3 +60,6 @@ pipeline:
         type: CI
         delegateSelectors:
           - docker-delegate-myharness
+        description: ""
+        when:
+          pipelineStatus: All

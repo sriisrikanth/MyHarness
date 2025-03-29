@@ -28,6 +28,10 @@ pipeline:
             type: Docker
             spec: {}
         description: ""
+        delegateSelectors:
+          - docker-delegate
+        when:
+          pipelineStatus: Success
   properties:
     ci:
       codebase:

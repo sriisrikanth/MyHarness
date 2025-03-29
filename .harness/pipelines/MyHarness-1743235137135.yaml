@@ -27,6 +27,11 @@ pipeline:
           runtime:
             type: Docker
             spec: {}
+        description: ""
+        delegateSelectors:
+          - docker-delegate-myharness-delegate
+        when:
+          pipelineStatus: Success
   properties:
     ci:
       codebase:

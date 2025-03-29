@@ -57,4 +57,5 @@ pipeline:
           runtime:
             spec: {}
             type: Docker
+            image: node:18
         type: CI

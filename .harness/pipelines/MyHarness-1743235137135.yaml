@@ -13,12 +13,14 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: Run
-                  name: Echo Welcome Message
-                  identifier: Echo_Welcome_Message
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
                   spec:
-                    shell: Sh
-                    command: echo "Welcome to Harness CI"
+                    connectorRef: account.harnessImage
+                    repo: " chenna12356/harness-demo"
+                    tags:
+                      - latest
           platform:
             os: Linux
             arch: Amd64

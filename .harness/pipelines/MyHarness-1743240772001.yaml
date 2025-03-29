@@ -14,7 +14,7 @@ pipeline:
           caching:
             enabled: true
           platform:
-            os: Linux
+            os: Windows
             arch: Amd64
           runtime:
             type: Docker
@@ -22,19 +22,12 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: BuildAndPushDockerRegistry
-                  name: BuildAndPushDockerRegistry_1
-                  identifier: BuildAndPushDockerRegistry_1
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
                   spec:
-                    connectorRef: account.harnessImage
-                    repo: chenna12356/harness-demo
-                    tags:
-                      - latest
-        delegateSelectors:
-          - docker-delegate
-          - linux-amd64
-        when:
-          pipelineStatus: Success
+                    shell: Bash
+                    command: npm start
   properties:
     ci:
       codebase:

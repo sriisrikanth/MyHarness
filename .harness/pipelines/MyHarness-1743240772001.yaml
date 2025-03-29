@@ -5,11 +5,20 @@ pipeline:
   orgIdentifier: default
   stages:
     - stage:
-        name: Build
-        identifier: Build
+        name: MyHarness
+        identifier: MyHarness
+        description: ""
         type: CI
         spec:
           cloneCodebase: true
+          caching:
+            enabled: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Docker
+            spec: {}
           execution:
             steps:
               - step:
@@ -21,17 +30,8 @@ pipeline:
                     repo: chenna12356/harness-demo
                     tags:
                       - latest
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Docker
-            spec: {}
-        description: ""
         delegateSelectors:
           - docker-delegate
-        when:
-          pipelineStatus: Success
   properties:
     ci:
       codebase:

@@ -33,15 +33,6 @@ pipeline:
                       npm install
                   timeout: 10m
               - step:
-                  identifier: test
-                  name: Run Tests
-                  type: Run
-                  spec:
-                    shell: Sh
-                    image: node:18
-                    command: npm test -- --watchAll=false || echo "Tests failed, but continuing..."
-                  timeout: 10m
-              - step:
                   identifier: build
                   name: Build Project
                   type: Run

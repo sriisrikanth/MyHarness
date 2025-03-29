@@ -16,6 +16,7 @@ pipeline:
         spec:
           caching:
             enabled: true
+            paths: []
           cloneCodebase: true
           execution:
             steps:
@@ -34,5 +35,9 @@ pipeline:
           runtime:
             type: Docker
             spec: {}
+          buildIntelligence:
+            enabled: true
         type: CI
         description: ""
+        delegateSelectors:
+          - docker-delegate-myharness

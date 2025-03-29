@@ -39,7 +39,7 @@ pipeline:
                   spec:
                     shell: Sh
                     image: node:18
-                    command: npm run test
+                    command: npm test -- --watchAll=false
                   timeout: 10m
               - step:
                   identifier: build

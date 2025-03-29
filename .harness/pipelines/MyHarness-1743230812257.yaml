@@ -51,20 +51,19 @@ pipeline:
                     command: npm run build
                   timeout: 10m
               - step:
-                  identifier: dockerbuild
-                  name: Docker Build
                   type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_2
+                  identifier: BuildAndPushDockerRegistry_2
                   spec:
-                    caching: true
-                    connectorRef: <+input>
-                    repo: hello/world
+                    connectorRef: account.harnessImage
+                    repo: chenna12356/harness-demo
                     tags:
                       - latest
-                  timeout: 10m
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
           runtime:
             type: Docker
             spec: {}
         type: CI
+        description: ""

@@ -28,6 +28,11 @@ pipeline:
                   spec:
                     shell: Bash
                     command: npm start
+        delegateSelectors:
+          - docker-delegate
+          - linux-amd64
+        when:
+          pipelineStatus: Success
   properties:
     ci:
       codebase:

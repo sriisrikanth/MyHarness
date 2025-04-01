@@ -15,7 +15,8 @@ pipeline:
         name: build
         spec:
           caching:
-            enabled: true
+            enabled: false
+            paths: []
           cloneCodebase: true
           execution:
             steps:
@@ -52,9 +53,13 @@ pipeline:
                   timeout: ""
                   type: BuildAndPushDockerRegistry
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
           runtime:
-            spec: {}
             type: Cloud
+            spec: {}
+          buildIntelligence:
+            enabled: false
         type: CI
+        description: ""
+  tags: {}

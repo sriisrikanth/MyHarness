@@ -1,19 +1,12 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
-  name: my-app
+  name: my-app-service
 spec:
-  replicas: 1
+  type: LoadBalancer  # <-- This is the key change
   selector:
-    matchLabels:
-      app: my-app
-  template:
-    metadata:
-      labels:
-        app: my-app
-    spec:
-      containers:
-      - name: my-app
-        image: nginx:latest
-        ports:
-        - containerPort: 80
+    app: my-app  # Make sure this matches the labels in your deployment
+  ports:
+    - protocol: TCP
+      port: 80            # Exposed port
+      targetPort: 3000    # The port your container is listening on (change if needed)
